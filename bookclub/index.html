@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>크리스천 독서모임 | 삶이 바뀌는 시작점</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080e1a;
+        --surface: #0f1624;
+        --surface-2: #161f33;
+        --text: #f0f4ff;
+        --muted: #8899bb;
+        --accent: #ff9d42;
+        --accent-light: #ffbe82;
+        --gold: #ffd46a;
+        --border: rgba(255, 157, 66, 0.22);
+        --border-subtle: rgba(255, 255, 255, 0.07);
+        --shadow: 0 40px 100px rgba(0, 0, 0, 0.45);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── Navigation ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 14, 26, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 14px 24px;
+      }
+
+      .nav-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo { height: 38px; width: auto; }
+
+      .nav-cta {
+        padding: 10px 22px;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        color: #0f1624;
+        font-weight: 800;
+        font-size: 0.875rem;
+        border-radius: 999px;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .nav-cta:hover { transform: scale(1.05); box-shadow: 0 8px 28px rgba(255,157,66,0.45); }
+      .nav-cta:active { transform: scale(0.97); }
+
+      /* ── Page ── */
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 24px 100px;
+      }
+
+      /* ── Badge ── */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 18px;
+        background: rgba(255, 157, 66, 0.1);
+        border: 1px solid rgba(255, 157, 66, 0.3);
+        color: var(--gold);
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        padding: 56px 52px;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: linear-gradient(145deg, rgba(18,26,44,0.98), rgba(11,16,28,0.95));
+        box-shadow: var(--shadow), 0 0 0 1px rgba(255,157,66,0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -120px; right: -120px;
+        width: 480px; height: 480px;
+        background: radial-gradient(circle, rgba(255,157,66,0.09) 0%, transparent 65%);
+        pointer-events: none;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        letter-spacing: -0.045em;
+        line-height: 1.1;
+        font-weight: 900;
+      }
+
+      h1 .line-accent {
+        display: block;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-sub {
+        margin-top: 20px;
+        font-size: 1.1rem;
+        color: var(--muted);
+        line-height: 2;
+      }
+
+      .hero-sub .arrow-line {
+        display: block;
+        margin-top: 8px;
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--accent);
+      }
+
+      /* ── CTA Button ── */
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 36px;
+        padding: 18px 40px;
+        border-radius: 999px;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: #0f1624;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        text-decoration: none;
+        box-shadow: 0 20px 52px rgba(255,157,66,0.38);
+        transition: transform 0.2s, box-shadow 0.2s;
+        letter-spacing: -0.01em;
+      }
+
+      .cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 28px 64px rgba(255,157,66,0.48); }
+      .cta:focus { outline: none; box-shadow: 0 0 0 3px rgba(255,157,66,0.5); }
+      .cta:active { transform: scale(0.97); }
+
+      /* ── Section ── */
+      .section {
+        margin-top: 40px;
+        padding: 40px;
+        border-radius: 28px;
+        background: rgba(11, 17, 30, 0.95);
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      }
+
+      .section h3 {
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        margin-bottom: 8px;
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        font-size: 0.98rem;
+        margin-bottom: 28px;
+      }
+
+      /* ── Quote Block ── */
+      .quote-block {
+        margin-top: 24px;
+        padding: 20px 24px;
+        border-radius: 16px;
+        background: rgba(255,157,66,0.07);
+        border-left: 3px solid var(--accent);
+        color: #f0e8d8;
+        font-weight: 600;
+        font-size: 1.02rem;
+        line-height: 1.8;
+      }
+
+      /* ── Intro Block ── */
+      .intro-flow {
+        display: grid;
+        gap: 12px;
+      }
+
+      .flow-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 22px;
+        background: var(--surface-2);
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+      }
+
+      .flow-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+      .flow-text { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+
+      .flow-item.highlight-item {
+        background: rgba(255,157,66,0.07);
+        border-color: rgba(255,157,66,0.2);
+      }
+
+      .flow-item.highlight-item .flow-text {
+        color: #f0e8d8;
+        font-weight: 700;
+      }
+
+      /* ── 4-Week Structure ── */
+      .weeks-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .week-card {
+        padding: 28px;
+        border-radius: 22px;
+        background: var(--surface-2);
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s, transform 0.2s;
+      }
+
+      .week-card:hover { border-color: rgba(255,157,66,0.25); transform: translateY(-3px); }
+
+      .week-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .week-num {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        color: #0f1624;
+        font-weight: 900;
+        font-size: 0.9rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        line-height: 1.2;
+        text-align: center;
+      }
+
+      .week-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--accent);
+        letter-spacing: -0.02em;
+      }
+
+      .week-list {
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+
+      .week-list li {
+        color: var(--muted);
+        font-size: 0.92rem;
+        padding-left: 18px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .week-list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 0.82rem;
+      }
+
+      /* ── Benefits ── */
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 22px;
+        background: var(--surface-2);
+        border-radius: 18px;
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s, transform 0.2s;
+      }
+
+      .benefit-item:hover { border-color: rgba(255,157,66,0.25); transform: translateY(-2px); }
+
+      .benefit-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+
+      .benefit-text {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .benefit-sub {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 4px;
+        font-weight: 400;
+      }
+
+      /* ── Pricing ── */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .price-card {
+        padding: 32px;
+        border-radius: 24px;
+        border: 1px solid var(--border-subtle);
+      }
+
+      .price-card.basic {
+        background: var(--surface-2);
+      }
+
+      .price-card.premium {
+        background: linear-gradient(145deg, rgba(255,157,66,0.14), rgba(255,212,106,0.05));
+        border-color: rgba(255,157,66,0.3);
+      }
+
+      .price-tag-label {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        margin-bottom: 10px;
+      }
+
+      .basic .price-tag-label { color: var(--muted); }
+      .premium .price-tag-label { color: var(--accent); }
+
+      .price-card h4 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 14px;
+      }
+
+      .price-amount {
+        font-size: 3.2rem;
+        font-weight: 900;
+        color: white;
+        letter-spacing: -0.05em;
+        line-height: 1;
+      }
+
+      .price-period { font-size: 0.95rem; color: var(--muted); margin-top: 6px; }
+
+      .price-include {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 5px 14px;
+        background: rgba(255,157,66,0.15);
+        color: var(--accent-light);
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      /* ── Urgency Badges ── */
+      .urgency-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+
+      .urgency-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: rgba(255,157,66,0.08);
+        border: 1px solid rgba(255,157,66,0.22);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+
+      /* ── CTA Section ── */
+      .cta-section {
+        margin-top: 40px;
+        padding: 52px 48px;
+        border-radius: 28px;
+        background: linear-gradient(145deg, rgba(255,157,66,0.1), rgba(255,212,106,0.04));
+        border: 1px solid rgba(255,157,66,0.22);
+        text-align: center;
+      }
+
+      .cta-section h3 {
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 12px;
+      }
+
+      .cta-section p { color: var(--muted); margin-bottom: 28px; font-size: 1rem; }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .hero { padding: 36px 28px; }
+        .section { padding: 28px 22px; }
+        .section h3 { font-size: 1.4rem; }
+        .weeks-grid { grid-template-columns: 1fr; }
+        .benefits-grid { grid-template-columns: 1fr; }
+        .pricing-grid { grid-template-columns: 1fr; }
+        .cta-section { padding: 36px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <img src="../office/Happyrich.png" alt="해피리치" class="nav-logo" />
+        <a
+          class="nav-cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScA1loapTwLfwi-_DnfYIP-6638UqTqWO3faceNbRcoaTo_qw/viewform?usp=header"
+          target="_blank"
+          rel="noopener"
+        >모임 신청 →</a>
+      </div>
+    </nav>
+
+    <div class="page">
+
+      <!-- ── Hero ── -->
+      <div class="hero">
+        <span class="badge">✝️ 크리스천 독서모임</span>
+        <h1>
+          "말씀은 아는데…<br />
+          <span class="line-accent">왜 삶은 바뀌지 않을까요?"</span>
+        </h1>
+        <div class="hero-sub">
+          책은 읽고 말씀은 듣는데 현실은 그대로라면,
+          <span class="arrow-line">👉 문제는 지식이 아니라 "해석과 적용"입니다.</span>
+        </div>
+        <a
+          class="cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScA1loapTwLfwi-_DnfYIP-6638UqTqWO3faceNbRcoaTo_qw/viewform?usp=header"
+          target="_blank"
+          rel="noopener"
+        >모임 신청하기 →</a>
+      </div>
+
+      <!-- ── Intro ── -->
+      <section class="section">
+        <h3>📖 이 모임의 본질</h3>
+        <p class="section-subtitle">독서모임이 아닙니다. 내 삶을 다시 해석하는 시간입니다.</p>
+        <div class="intro-flow">
+          <div class="flow-item">
+            <span class="flow-icon">📚</span>
+            <span class="flow-text">책은 읽고 말씀은 듣는데</span>
+          </div>
+          <div class="flow-item">
+            <span class="flow-icon">😔</span>
+            <span class="flow-text">현실은 그대로라면</span>
+          </div>
+          <div class="flow-item highlight-item">
+            <span class="flow-icon">💡</span>
+            <span class="flow-text">문제는 지식이 아니라 "해석과 적용"입니다</span>
+          </div>
+        </div>
+        <div class="quote-block">
+          이건 독서모임이 아닙니다.<br />
+          <strong>내 삶을 다시 해석하는 시간입니다.</strong>
+        </div>
+      </section>
+
+      <!-- ── Structure ── -->
+      <section class="section">
+        <h3>📅 4주 진행 구조</h3>
+        <p class="section-subtitle">한 달, 한 권. 핵심 질문 기반 나눔 · 삶 적용 중심으로 진행됩니다.</p>
+        <div class="weeks-grid">
+          <div class="week-card">
+            <div class="week-header">
+              <div class="week-num">1주</div>
+              <div class="week-title">이해</div>
+            </div>
+            <ul class="week-list">
+              <li>책 핵심 구조 정리</li>
+              <li>나의 현재 상태 인식</li>
+            </ul>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <div class="week-num">2주</div>
+              <div class="week-title">연결</div>
+            </div>
+            <ul class="week-list">
+              <li>감정과 신앙 연결</li>
+              <li>내 패턴 발견</li>
+            </ul>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <div class="week-num">3주</div>
+              <div class="week-title">적용</div>
+            </div>
+            <ul class="week-list">
+              <li>삶에 적용</li>
+              <li>행동 변화 시도</li>
+            </ul>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <div class="week-num">4주</div>
+              <div class="week-title">정리</div>
+            </div>
+            <ul class="week-list">
+              <li>변화 점검</li>
+              <li>방향 재설정</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Benefits ── -->
+      <section class="section">
+        <h3>🎁 핵심 혜택</h3>
+        <p class="section-subtitle">단순 독서가 아니라 삶 변화 구조입니다.</p>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <span class="benefit-icon">✝️</span>
+            <div>
+              <div class="benefit-text">신앙 정체성 확립</div>
+              <div class="benefit-sub">말씀을 삶으로 연결하는 해석 훈련</div>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🕊️</span>
+            <div>
+              <div class="benefit-text">감정 안정</div>
+              <div class="benefit-sub">감정과 신앙을 연결하며 내면이 정리됩니다</div>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🔥</span>
+            <div>
+              <div class="benefit-text">삶 적용력</div>
+              <div class="benefit-sub">아는 것에서 행동으로 연결되는 구조</div>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🤝</span>
+            <div>
+              <div class="benefit-text">깊은 관계</div>
+              <div class="benefit-sub">같은 방향을 바라보는 사람들과 연결</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Pricing ── -->
+      <section class="section">
+        <h3>💎 참가비</h3>
+        <p class="section-subtitle">가볍게 오는 모임이 아니라, 진짜 변화할 사람만 오게 하는 구조입니다.</p>
+        <div class="pricing-grid">
+          <div class="price-card basic">
+            <div class="price-tag-label">① 기본</div>
+            <h4>기본 멤버십</h4>
+            <div class="price-amount">5만원</div>
+            <div class="price-period">/ 월</div>
+            <ul style="list-style:none; margin-top:18px; display:grid; gap:8px;">
+              <li style="color:var(--muted); font-size:0.92rem; padding-left:18px; position:relative;">
+                <span style="position:absolute;left:0;color:var(--accent);">✓</span> 4주 모임 참가
+              </li>
+              <li style="color:var(--muted); font-size:0.92rem; padding-left:18px; position:relative;">
+                <span style="position:absolute;left:0;color:var(--accent);">✓</span> 핵심 질문 나눔
+              </li>
+              <li style="color:var(--muted); font-size:0.92rem; padding-left:18px; position:relative;">
+                <span style="position:absolute;left:0;color:var(--accent);">✓</span> 삶 적용 구조
+              </li>
+            </ul>
+          </div>
+          <div class="price-card premium">
+            <div class="price-tag-label">② 프리미엄</div>
+            <h4>프리미엄 멤버십</h4>
+            <div class="price-amount">10만원</div>
+            <div class="price-period">/ 월</div>
+            <span class="price-include">✦ 개인 피드백 포함</span>
+            <ul style="list-style:none; margin-top:18px; display:grid; gap:8px;">
+              <li style="color:var(--muted); font-size:0.92rem; padding-left:18px; position:relative;">
+                <span style="position:absolute;left:0;color:var(--accent);">✓</span> 기본 모든 혜택
+              </li>
+              <li style="color:#f0e8d8; font-size:0.92rem; font-weight:700; padding-left:18px; position:relative;">
+                <span style="position:absolute;left:0;color:var(--gold);">✓</span> 1:1 개인 피드백
+              </li>
+              <li style="color:#f0e8d8; font-size:0.92rem; font-weight:700; padding-left:18px; position:relative;">
+                <span style="position:absolute;left:0;color:var(--gold);">✓</span> 삶 적용 점검
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="quote-block">
+          가볍게 오는 모임이 아닙니다.<br />
+          <strong>진짜 변화할 사람만 오게 하는 구조입니다.</strong>
+        </div>
+      </section>
+
+      <!-- ── Final CTA ── -->
+      <section class="cta-section">
+        <h3>독서모임이 아닙니다.<br />삶이 바뀌는 시작점입니다.</h3>
+        <p>말씀을 알고 있는 것에서 삶으로 연결되는 첫 걸음.</p>
+        <div class="urgency-badges">
+          <span class="urgency-badge">📚 한 달 한 권</span>
+          <span class="urgency-badge">👥 소수 정예</span>
+          <span class="urgency-badge">🔥 삶 적용 중심</span>
+        </div>
+        <a
+          class="cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScA1loapTwLfwi-_DnfYIP-6638UqTqWO3faceNbRcoaTo_qw/viewform?usp=header"
+          target="_blank"
+          rel="noopener"
+        >모임 신청하기 →</a>
+      </section>
+
+    </div>
+  </body>
+</html>
