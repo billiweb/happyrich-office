@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>해피리치 오피스 | 결과 만드는 사업가 공간</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080e1a;
+        --surface: #0f1624;
+        --surface-2: #161f33;
+        --text: #f0f4ff;
+        --muted: #8899bb;
+        --accent: #ff9d42;
+        --accent-light: #ffbe82;
+        --gold: #ffd46a;
+        --border: rgba(255, 157, 66, 0.22);
+        --border-subtle: rgba(255, 255, 255, 0.07);
+        --shadow: 0 40px 100px rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          'Noto Sans KR',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── Navigation ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 14, 26, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 14px 24px;
+      }
+
+      .nav-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        height: 38px;
+        width: auto;
+      }
+
+      .nav-cta {
+        padding: 10px 22px;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        color: #0f1624;
+        font-weight: 800;
+        font-size: 0.875rem;
+        border-radius: 999px;
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        letter-spacing: -0.01em;
+      }
+
+      .nav-cta:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 28px rgba(255, 157, 66, 0.45);
+      }
+
+      .nav-cta:active {
+        transform: scale(0.97);
+      }
+
+      /* ── Page Layout ── */
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 24px 100px;
+      }
+
+      /* ── Badge ── */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 18px;
+        background: rgba(255, 157, 66, 0.1);
+        border: 1px solid rgba(255, 157, 66, 0.3);
+        color: var(--gold);
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+        letter-spacing: -0.01em;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        padding: 56px 52px;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: linear-gradient(
+          145deg,
+          rgba(18, 26, 44, 0.98),
+          rgba(11, 16, 28, 0.95)
+        );
+        box-shadow:
+          var(--shadow),
+          0 0 0 1px rgba(255, 157, 66, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 157, 66, 0.09) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .logo {
+        height: 46px;
+        width: auto;
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 4.5vw, 4rem);
+        letter-spacing: -0.045em;
+        line-height: 1.08;
+        font-weight: 900;
+        color: var(--text);
+      }
+
+      h1 .line-accent {
+        display: block;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      h2 {
+        font-size: clamp(1.3rem, 2vw, 1.75rem);
+        color: #b8ccf0;
+        font-weight: 600;
+        margin-top: 14px;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-copy {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 640px;
+        line-height: 1.9;
+      }
+
+      /* ── Stats Bar ── */
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 40px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 157, 66, 0.15);
+        background: rgba(255, 157, 66, 0.05);
+      }
+
+      .stat-item {
+        padding: 22px 16px;
+        text-align: center;
+        border-right: 1px solid rgba(255, 157, 66, 0.12);
+      }
+
+      .stat-item:last-child {
+        border-right: none;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--accent);
+        line-height: 1;
+        display: block;
+        letter-spacing: -0.04em;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 6px;
+        display: block;
+        font-weight: 500;
+      }
+
+      /* ── CTA Button ── */
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 36px;
+        padding: 18px 40px;
+        border-radius: 999px;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: #0f1624;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        text-decoration: none;
+        box-shadow: 0 20px 52px rgba(255, 157, 66, 0.38);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        letter-spacing: -0.01em;
+      }
+
+      .cta:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 28px 64px rgba(255, 157, 66, 0.48);
+      }
+
+      .cta:focus {
+        outline: none;
+        box-shadow:
+          0 0 0 3px rgba(255, 157, 66, 0.5),
+          0 20px 52px rgba(255, 157, 66, 0.38);
+      }
+
+      .cta:active {
+        transform: scale(0.97);
+      }
+
+      /* ── Section ── */
+      .section {
+        margin-top: 40px;
+        padding: 40px;
+        border-radius: 28px;
+        background: rgba(11, 17, 30, 0.95);
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      }
+
+      .section h3 {
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        font-size: 0.98rem;
+        margin-bottom: 28px;
+      }
+
+      /* ── Numbered List ── */
+      .numbered-list {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+      }
+
+      .numbered-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 18px 22px;
+        background: var(--surface-2);
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+
+      .numbered-list li:hover {
+        border-color: rgba(255, 157, 66, 0.2);
+        transform: translateX(4px);
+      }
+
+      .num-badge {
+        min-width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        color: #0f1624;
+        font-weight: 900;
+        font-size: 0.9rem;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .num-text {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.65;
+        padding-top: 7px;
+      }
+
+      /* ── Grid ── */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      /* ── Icon Card ── */
+      .icon-card {
+        padding: 28px;
+        border-radius: 22px;
+        background: var(--surface-2);
+        border: 1px solid var(--border-subtle);
+        transition:
+          border-color 0.2s,
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .icon-card:hover {
+        border-color: rgba(255, 157, 66, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-icon {
+        font-size: 2rem;
+        margin-bottom: 16px;
+        display: block;
+        line-height: 1;
+      }
+
+      .card-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: var(--text);
+      }
+
+      .card-list {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .card-list li {
+        color: var(--muted);
+        font-size: 0.92rem;
+        padding-left: 20px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .card-list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 0.85rem;
+        top: 1px;
+      }
+
+      /* ── Quote Block ── */
+      .quote-block {
+        margin-top: 24px;
+        padding: 20px 24px;
+        border-radius: 16px;
+        background: rgba(255, 157, 66, 0.07);
+        border-left: 3px solid var(--accent);
+        color: #f0e8d8;
+        font-weight: 600;
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      /* ── Results Numbers ── */
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .result-item {
+        text-align: center;
+        padding: 28px 16px;
+        background: var(--surface-2);
+        border-radius: 20px;
+        border: 1px solid var(--border-subtle);
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+
+      .result-item:hover {
+        border-color: rgba(255, 157, 66, 0.25);
+        transform: translateY(-3px);
+      }
+
+      .result-number {
+        font-size: 2.6rem;
+        font-weight: 900;
+        color: var(--accent);
+        line-height: 1;
+        display: block;
+        letter-spacing: -0.04em;
+      }
+
+      .result-unit {
+        font-size: 1.4rem;
+      }
+
+      .result-label {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 10px;
+        display: block;
+        line-height: 1.5;
+      }
+
+      /* ── Highlight ── */
+      .highlight {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* ── Pricing ── */
+      .pricing-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .price-card {
+        padding: 32px;
+        border-radius: 24px;
+        border: 1px solid var(--border-subtle);
+      }
+
+      .price-card.featured {
+        background: linear-gradient(
+          145deg,
+          rgba(255, 157, 66, 0.14),
+          rgba(255, 212, 106, 0.05)
+        );
+        border-color: rgba(255, 157, 66, 0.3);
+      }
+
+      .price-card.regular {
+        background: var(--surface-2);
+        opacity: 0.65;
+      }
+
+      .price-tag {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      .price-tag.regular-tag {
+        color: var(--muted);
+      }
+
+      .price-card h4 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: var(--text);
+      }
+
+      .price-amount {
+        font-size: 3.2rem;
+        font-weight: 900;
+        color: white;
+        letter-spacing: -0.05em;
+        line-height: 1;
+      }
+
+      .price-period {
+        font-size: 0.95rem;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      .price-save {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 5px 14px;
+        background: rgba(255, 157, 66, 0.18);
+        color: var(--accent-light);
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .benefits-list {
+        list-style: none;
+        margin-top: 22px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .benefits-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .benefits-list li .check {
+        color: var(--accent);
+        font-weight: 900;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      /* ── CTA Section ── */
+      .cta-section {
+        margin-top: 40px;
+        padding: 52px 48px;
+        border-radius: 28px;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 157, 66, 0.1),
+          rgba(255, 212, 106, 0.04)
+        );
+        border: 1px solid rgba(255, 157, 66, 0.22);
+        text-align: center;
+      }
+
+      .cta-section h3 {
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 12px;
+      }
+
+      .cta-section p {
+        color: var(--muted);
+        margin-bottom: 28px;
+        font-size: 1rem;
+      }
+
+      .urgency-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+
+      .urgency-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: rgba(255, 157, 66, 0.08);
+        border: 1px solid rgba(255, 157, 66, 0.22);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+
+      /* ── Leader Section ── */
+      .leader-card {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .leader-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 24px;
+        object-fit: cover;
+        object-position: top;
+        flex-shrink: 0;
+        border: 2px solid rgba(255, 157, 66, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .leader-info {
+        flex: 1;
+      }
+
+      .leader-name {
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        margin-bottom: 4px;
+        color: var(--text);
+      }
+
+      .leader-title {
+        font-size: 0.9rem;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: 0.02em;
+      }
+
+      .leader-desc {
+        color: var(--muted);
+        font-size: 0.97rem;
+        line-height: 1.85;
+      }
+
+      .leader-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .leader-tag {
+        padding: 5px 14px;
+        background: rgba(255, 157, 66, 0.08);
+        border: 1px solid rgba(255, 157, 66, 0.2);
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--gold);
+      }
+
+      /* ── Form Section ── */
+      .form-frame {
+        width: 100%;
+        min-height: 900px;
+        border: 0;
+        display: block;
+        border-radius: 20px;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 36px 28px;
+        }
+
+        .section {
+          padding: 28px 22px;
+        }
+
+        .section h3 {
+          font-size: 1.4rem;
+        }
+
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .results-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .pricing-compare {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-section {
+          padding: 36px 24px;
+        }
+
+        .leader-card {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+        }
+
+        .leader-photo {
+          width: 140px;
+          height: 140px;
+        }
+
+        .stats-bar {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .stats-bar {
+          grid-template-columns: 1fr;
+        }
+
+        .results-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-item {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 157, 66, 0.12);
+        }
+
+        .stat-item:last-child {
+          border-bottom: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <img src="Happyrich.png" alt="해피리치 오피스" class="nav-logo" />
+        <a class="nav-cta" href="#form">6월 베타 신청 →</a>
+      </div>
+    </nav>
+
+    <div class="page">
+      <!-- ── Hero ── -->
+      <div class="hero">
+        <span class="badge">🔥 6월 베타 멤버 모집 중</span>
+        <h1>
+          당신이 게을러서가
+          <span class="line-accent">아닙니다.</span>
+        </h1>
+        <h2>문제는 잘못된 환경입니다.</h2>
+        <p class="hero-copy">
+          혼자 사업하면 실행은 밀리고, 결정은 흔들리고, 매출은 불안정해집니다.
+          해피리치 오피스는 단순한 공간이 아니라, 사업가가 바로 결과를 만드는
+          실행 시스템입니다.
+        </p>
+
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-number">3~10x</span>
+            <span class="stat-label">실행 속도 향상</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">월 30만</span>
+            <span class="stat-label">베타 멤버 가격</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">선착순</span>
+            <span class="stat-label">정원 제한 마감</span>
+          </div>
+        </div>
+
+        <a class="cta" href="#form"> 6월 베타 멤버 신청하기 → </a>
+      </div>
+
+      <!-- ── Problem 1 ── -->
+      <section class="section">
+        <h3>🤔 지금, 혼자 사업이라면</h3>
+        <p class="section-subtitle">
+          혼자서 일할 때 가장 먼저 무너지는 것들입니다.
+        </p>
+        <ul class="numbered-list">
+          <li>
+            <span class="num-badge">1</span>
+            <span class="num-text">루틴은 사라지고 매일 반복되는 패턴에 갇힙니다</span>
+          </li>
+          <li>
+            <span class="num-badge">2</span>
+            <span class="num-text">실행은 계속 미뤄지고, 생각만 점점 많아집니다</span>
+          </li>
+          <li>
+            <span class="num-badge">3</span>
+            <span class="num-text">결정이 흔들리고 방향을 잃어버립니다</span>
+          </li>
+        </ul>
+        <div class="quote-block">
+          이대로 두면, 지금과 같은 결과가 계속 반복됩니다.
+        </div>
+      </section>
+
+      <!-- ── Problem 2 ── -->
+      <section class="section">
+        <h3>😓 당신이 지금 겪는 현실</h3>
+        <div class="grid-2">
+          <div class="icon-card">
+            <span class="card-icon">🔴</span>
+            <div class="card-title">지금 이런 상태일 수 있습니다</div>
+            <ul class="card-list">
+              <li>혼자라서 계속 늘어진다</li>
+              <li>실행은 계획대로 되지 않는다</li>
+              <li>방향은 자주 흔들린다</li>
+              <li>매출은 한 번 터지면 불안정하다</li>
+            </ul>
+          </div>
+          <div class="icon-card">
+            <span class="card-icon">💡</span>
+            <div class="card-title">핵심 메시지</div>
+            <p
+              style="
+                color: var(--muted);
+                font-size: 0.95rem;
+                line-height: 1.9;
+              "
+            >
+              이건 의지의 문제가 아닙니다.<br />
+              <span class="highlight">환경이 문제</span>입니다.<br /><br />
+              올바른 환경에서는<br />실행이 자연스럽게 됩니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Warning ── -->
+      <section class="section">
+        <h3>⏰ 계속 이렇게 남겨두면</h3>
+        <p class="section-subtitle">
+          지금 아무것도 바꾸지 않으면 1년 후도 달라지지 않습니다.
+        </p>
+        <ul class="numbered-list">
+          <li>
+            <span class="num-badge">1</span>
+            <span class="num-text">실행은 더 늦어지고 좋은 기회를 계속 놓치게 됩니다</span>
+          </li>
+          <li>
+            <span class="num-badge">2</span>
+            <span class="num-text">결정은 계속 흔들리며 에너지만 낭비됩니다</span>
+          </li>
+          <li>
+            <span class="num-badge">3</span>
+            <span class="num-text">매출은 요동치고 불안한 사업 구조가 굳어집니다</span>
+          </li>
+        </ul>
+        <div class="quote-block">
+          사업가에게 가장 큰 적은 <strong>느린 속도</strong>입니다.
+        </div>
+      </section>
+
+      <!-- ── Solution ── -->
+      <section class="section">
+        <h3>✅ 해피리치 오피스가 답입니다</h3>
+        <p class="section-subtitle">
+          단순한 공유오피스가 아닙니다. 사업가가 실제 결과를 만들도록 설계된
+          실행 공간입니다.
+        </p>
+        <div class="grid-2">
+          <div class="icon-card">
+            <span class="card-icon">⚙️</span>
+            <div class="card-title">핵심 구조</div>
+            <ul class="card-list">
+              <li>매일 실행이 멈추지 않는 환경</li>
+              <li>같이 성장하는 사업가 네트워크</li>
+              <li>세바시 연결로 확장 기회 제공</li>
+              <li>직접 피드백으로 빠른 개선</li>
+            </ul>
+          </div>
+          <div class="icon-card">
+            <span class="card-icon">🏆</span>
+            <div class="card-title">가장 강한 차별화</div>
+            <p
+              style="
+                color: var(--gold);
+                font-weight: 700;
+                font-size: 1rem;
+                margin-bottom: 12px;
+              "
+            >
+              "나와 함께하는 시간"
+            </p>
+            <p style="color: var(--muted); font-size: 0.92rem; line-height: 1.8">
+              사업 구조 설계, 세일즈, 퍼널을 동시에 봅니다. 함께할수록 결과가
+              더 빠르게 나옵니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Leader ── -->
+      <section class="section">
+        <h3>👤 리더 소개</h3>
+        <p class="section-subtitle">해피리치 오피스를 이끄는 사람입니다.</p>
+        <div class="leader-card">
+          <img src="leader.jpeg" alt="리더 사진" class="leader-photo" />
+          <div class="leader-info">
+            <div class="leader-name">해피리치 대표</div>
+            <div class="leader-title">사업 구조 설계 · 세일즈 · 퍼널 전문가</div>
+            <p class="leader-desc">
+              사업 구조 설계, 세일즈, 퍼널을 동시에 보는 실전 사업가입니다.
+              세바시와 연결된 네트워크로 멤버들의 확장 기회를 직접 만들어드립니다.
+              함께할수록 결과가 더 빠르게 나오는 환경을 제공합니다.
+            </p>
+            <div class="leader-tags">
+              <span class="leader-tag">📐 사업 구조 설계</span>
+              <span class="leader-tag">💰 세일즈</span>
+              <span class="leader-tag">🔧 퍼널</span>
+              <span class="leader-tag">🎤 세바시 연결</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Results ── -->
+      <section class="section">
+        <h3>🚀 이제 가능한 변화</h3>
+        <p class="section-subtitle">환경이 바뀌면 결과도 달라집니다.</p>
+
+        <div class="results-grid">
+          <div class="result-item">
+            <span class="result-number"
+              >3~10<span class="result-unit">x</span></span
+            >
+            <span class="result-label">실행 속도가<br />빨라집니다</span>
+          </div>
+          <div class="result-item">
+            <span class="result-number">📈</span>
+            <span class="result-label">매출 구조가<br />안정화됩니다</span>
+          </div>
+          <div class="result-item">
+            <span class="result-number">🎯</span>
+            <span class="result-label">방향이<br />명확해집니다</span>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          "혼자 사업"에서 <strong>"결과 만드는 사업"</strong>으로.
+        </div>
+      </section>
+
+      <!-- ── Pricing ── -->
+      <section class="section">
+        <h3>💎 6월 베타 멤버 혜택</h3>
+        <p class="section-subtitle">
+          지금이 가장 좋은 조건으로 합류할 수 있는 마지막 기회입니다.
+        </p>
+
+        <div class="pricing-compare">
+          <div class="price-card featured">
+            <div class="price-tag">🔥 베타 특가</div>
+            <h4>베타 멤버 (6월 오픈 전)</h4>
+            <div class="price-amount">30만원</div>
+            <div class="price-period">/ 월</div>
+            <span class="price-save">정가 대비 최대 70% 절약</span>
+            <ul class="benefits-list">
+              <li><span class="check">✓</span> 핵심 멤버 포지션 확보</li>
+              <li><span class="check">✓</span> 향후 혜택 영구 유지</li>
+              <li><span class="check">✓</span> 직접 1:1 피드백</li>
+              <li><span class="check">✓</span> 사업가 네트워크 합류</li>
+            </ul>
+          </div>
+          <div class="price-card regular">
+            <div class="price-tag regular-tag">정가 (오픈 후)</div>
+            <h4>일반 멤버</h4>
+            <div class="price-amount" style="color: var(--muted)">
+              50~100만원
+            </div>
+            <div class="price-period">/ 월</div>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <strong>"왜 이렇게 싸죠?"</strong><br />
+          이유는 단 하나입니다. 지금은
+          <span class="highlight">초기 멤버를 모으는 단계</span>이기 때문입니다.
+          이 가격은 지금만 가능합니다.
+        </div>
+      </section>
+
+      <!-- ── Final CTA ── -->
+      <section class="cta-section" id="apply">
+        <h3>지금 바로 선착순 신청</h3>
+        <p>환경을 바꾸면, 속도와 매출이 동시에 바뀝니다.</p>
+
+        <div class="urgency-badges">
+          <span class="urgency-badge">⚡ 선착순 모집</span>
+          <span class="urgency-badge">👥 인원 제한</span>
+          <span class="urgency-badge">🚫 정원 차면 즉시 마감</span>
+        </div>
+
+        <a class="cta" href="#form"> 6월 베타 멤버 신청하기 → </a>
+      </section>
+
+      <!-- ── Form ── -->
+      <section class="section" id="form" style="padding: 36px">
+        <h3 style="margin-bottom: 24px">📝 신청 폼</h3>
+        <iframe
+          class="form-frame"
+          src="https://docs.google.com/forms/d/e/1FAIpQLScl60y3j3B9vzssjDJZPgccxjQ_MKbcGOfX8ctbn2ZF9Bueqw/viewform?embedded=true"
+          title="해피리치 오피스 신청 폼"
+        ></iframe>
+      </section>
+    </div>
+  </body>
+</html>
