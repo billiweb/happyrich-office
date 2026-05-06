@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>해피리치 아카데미 | 8주 안에 실제로 돈을 벌어봅니다</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080e1a;
+        --surface: #0f1624;
+        --surface-2: #161f33;
+        --text: #f0f4ff;
+        --muted: #8899bb;
+        --accent: #ff9d42;
+        --accent-light: #ffbe82;
+        --gold: #ffd46a;
+        --border: rgba(255, 157, 66, 0.22);
+        --border-subtle: rgba(255, 255, 255, 0.07);
+        --shadow: 0 40px 100px rgba(0, 0, 0, 0.45);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── Navigation ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 14, 26, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 14px 24px;
+      }
+
+      .nav-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo { height: 38px; width: auto; }
+
+      .nav-cta {
+        padding: 10px 22px;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        color: #0f1624;
+        font-weight: 800;
+        font-size: 0.875rem;
+        border-radius: 999px;
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+        letter-spacing: -0.01em;
+      }
+
+      .nav-cta:hover { transform: scale(1.05); box-shadow: 0 8px 28px rgba(255,157,66,0.45); }
+      .nav-cta:active { transform: scale(0.97); }
+
+      /* ── Page ── */
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 48px 24px 100px;
+      }
+
+      /* ── Badge ── */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 18px;
+        background: rgba(255, 157, 66, 0.1);
+        border: 1px solid rgba(255, 157, 66, 0.3);
+        color: var(--gold);
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        padding: 56px 52px;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: linear-gradient(145deg, rgba(18,26,44,0.98), rgba(11,16,28,0.95));
+        box-shadow: var(--shadow), 0 0 0 1px rgba(255,157,66,0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -120px; right: -120px;
+        width: 480px; height: 480px;
+        background: radial-gradient(circle, rgba(255,157,66,0.09) 0%, transparent 65%);
+        pointer-events: none;
+      }
+
+      .logo { height: 46px; width: auto; margin-bottom: 28px; }
+
+      h1 {
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+        letter-spacing: -0.045em;
+        line-height: 1.1;
+        font-weight: 900;
+        color: var(--text);
+      }
+
+      h1 .line-question {
+        display: block;
+        color: #b8ccf0;
+        font-size: 0.7em;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      h1 .line-accent {
+        display: block;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-copy {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 640px;
+        line-height: 1.9;
+      }
+
+      /* ── Program Info Bar ── */
+      .info-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 40px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255,157,66,0.15);
+        background: rgba(255,157,66,0.05);
+      }
+
+      .info-item {
+        padding: 20px 16px;
+        text-align: center;
+        border-right: 1px solid rgba(255,157,66,0.12);
+      }
+
+      .info-item:last-child { border-right: none; }
+
+      .info-icon { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+
+      .info-value {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--text);
+        display: block;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .info-label {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 4px;
+        display: block;
+      }
+
+      /* ── CTA Button ── */
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 36px;
+        padding: 18px 40px;
+        border-radius: 999px;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: #0f1624;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        text-decoration: none;
+        box-shadow: 0 20px 52px rgba(255,157,66,0.38);
+        transition: transform 0.2s, box-shadow 0.2s;
+        letter-spacing: -0.01em;
+      }
+
+      .cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 28px 64px rgba(255,157,66,0.48); }
+      .cta:focus { outline: none; box-shadow: 0 0 0 3px rgba(255,157,66,0.5), 0 20px 52px rgba(255,157,66,0.38); }
+      .cta:active { transform: scale(0.97); }
+
+      /* ── Section ── */
+      .section {
+        margin-top: 40px;
+        padding: 40px;
+        border-radius: 28px;
+        background: rgba(11, 17, 30, 0.95);
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      }
+
+      .section h3 {
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        font-size: 0.98rem;
+        margin-bottom: 28px;
+      }
+
+      /* ── Pain Points ── */
+      .pain-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .pain-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px 20px;
+        background: var(--surface-2);
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s, transform 0.2s;
+      }
+
+      .pain-item:hover { border-color: rgba(255,157,66,0.2); transform: translateX(4px); }
+
+      .pain-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+      .pain-text { color: var(--muted); font-size: 0.97rem; line-height: 1.65; }
+
+      /* ── Solution Cards ── */
+      .solution-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .sol-card {
+        padding: 28px 24px;
+        border-radius: 22px;
+        background: var(--surface-2);
+        border: 1px solid var(--border-subtle);
+        text-align: center;
+        transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      }
+
+      .sol-card:hover { border-color: rgba(255,157,66,0.2); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+
+      .sol-icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+
+      .sol-title {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--accent);
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+      }
+
+      .sol-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+      /* ── Steps ── */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .step-item {
+        padding: 24px 18px;
+        border-radius: 20px;
+        background: var(--surface-2);
+        border: 1px solid var(--border-subtle);
+        text-align: center;
+        transition: border-color 0.2s, transform 0.2s;
+      }
+
+      .step-item:hover { border-color: var(--border); transform: translateY(-2px); }
+
+      .step-num {
+        width: 40px; height: 40px;
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        color: #0f1624;
+        font-weight: 900;
+        font-size: 1rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 14px;
+      }
+
+      .step-title {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.4;
+      }
+
+      /* ── Curriculum ── */
+      .curriculum-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .week-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        background: var(--surface-2);
+        border-radius: 14px;
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s;
+      }
+
+      .week-item:hover { border-color: rgba(255,157,66,0.2); }
+
+      .week-badge {
+        min-width: 48px;
+        padding: 4px 0;
+        background: rgba(255,157,66,0.12);
+        color: var(--accent);
+        font-weight: 900;
+        font-size: 0.8rem;
+        border-radius: 8px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+
+      .week-content { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+
+      /* ── Leaders ── */
+      .leaders-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .leader-card {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 28px;
+        background: var(--surface-2);
+        border-radius: 22px;
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s, transform 0.2s;
+      }
+
+      .leader-card:hover { border-color: rgba(255,157,66,0.2); transform: translateY(-2px); }
+
+      .leader-photo {
+        width: 90px; height: 90px;
+        border-radius: 18px;
+        object-fit: cover;
+        object-position: top;
+        flex-shrink: 0;
+        border: 2px solid rgba(255,157,66,0.3);
+      }
+
+      .leader-placeholder {
+        width: 90px; height: 90px;
+        border-radius: 18px;
+        background: var(--surface);
+        border: 2px solid rgba(255,157,66,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+
+      .leader-name {
+        font-size: 1.2rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        margin-bottom: 4px;
+      }
+
+      .leader-role {
+        font-size: 0.85rem;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .leader-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
+
+      /* ── Who For ── */
+      .fit-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .fit-card {
+        padding: 28px;
+        border-radius: 22px;
+        border: 1px solid var(--border-subtle);
+      }
+
+      .fit-card.good { background: rgba(255,157,66,0.06); border-color: rgba(255,157,66,0.2); }
+      .fit-card.bad  { background: var(--surface-2); opacity: 0.75; }
+
+      .fit-card-title {
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .fit-list { list-style: none; display: grid; gap: 10px; }
+
+      .fit-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.5;
+      }
+
+      .fit-check { flex-shrink: 0; font-weight: 900; }
+      .good .fit-check { color: var(--accent); }
+      .bad .fit-check  { color: #6b7a99; }
+
+      /* ── Pricing ── */
+      .price-box {
+        padding: 40px;
+        border-radius: 24px;
+        background: linear-gradient(145deg, rgba(255,157,66,0.14), rgba(255,212,106,0.05));
+        border: 1px solid rgba(255,157,66,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .price-left {}
+
+      .price-tag-label {
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .price-name {
+        font-size: 1.4rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        margin-bottom: 12px;
+      }
+
+      .price-amount {
+        font-size: 3.6rem;
+        font-weight: 900;
+        color: white;
+        letter-spacing: -0.05em;
+        line-height: 1;
+      }
+
+      .price-period { font-size: 1rem; color: var(--muted); margin-top: 6px; }
+
+      .price-features {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .price-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .price-features .check { color: var(--accent); font-weight: 900; flex-shrink: 0; }
+
+      .price-right { text-align: center; flex-shrink: 0; }
+
+      /* ── Quote ── */
+      .quote-block {
+        margin-top: 24px;
+        padding: 20px 24px;
+        border-radius: 16px;
+        background: rgba(255,157,66,0.07);
+        border-left: 3px solid var(--accent);
+        color: #f0e8d8;
+        font-weight: 600;
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      /* ── CTA Section ── */
+      .cta-section {
+        margin-top: 40px;
+        padding: 52px 48px;
+        border-radius: 28px;
+        background: linear-gradient(145deg, rgba(255,157,66,0.1), rgba(255,212,106,0.04));
+        border: 1px solid rgba(255,157,66,0.22);
+        text-align: center;
+      }
+
+      .cta-section h3 {
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 12px;
+      }
+
+      .cta-section p { color: var(--muted); margin-bottom: 28px; font-size: 1rem; }
+
+      .urgency-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+
+      .urgency-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: rgba(255,157,66,0.08);
+        border: 1px solid rgba(255,157,66,0.22);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .hero { padding: 36px 28px; }
+        .section { padding: 28px 22px; }
+        .section h3 { font-size: 1.4rem; }
+        .info-bar { grid-template-columns: repeat(2, 1fr); }
+        .info-item:nth-child(2) { border-right: none; }
+        .pain-grid { grid-template-columns: 1fr; }
+        .solution-grid { grid-template-columns: 1fr; }
+        .steps-grid { grid-template-columns: repeat(2, 1fr); }
+        .curriculum-grid { grid-template-columns: 1fr; }
+        .leaders-grid { grid-template-columns: 1fr; }
+        .fit-grid { grid-template-columns: 1fr; }
+        .price-box { flex-direction: column; padding: 28px; }
+        .price-right { width: 100%; }
+        .cta-section { padding: 36px 24px; }
+      }
+
+      @media (max-width: 480px) {
+        .info-bar { grid-template-columns: repeat(2, 1fr); }
+        .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <img src="../office/Happyrich.png" alt="해피리치" class="nav-logo" />
+        <a
+          class="nav-cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc7ewJ7NPJmSJTzm3sWapPbn5Rp0OSdFJrA51GHMlRNRDF4rQ/viewform?usp=header"
+          target="_blank"
+          rel="noopener"
+        >프로그램 신청 →</a>
+      </div>
+    </nav>
+
+    <div class="page">
+
+      <!-- ── Hero ── -->
+      <div class="hero">
+        <img src="../office/Happyrich.png" alt="해피리치 아카데미" class="logo" />
+        <span class="badge">🎓 해피리치 아카데미</span>
+        <h1>
+          <span class="line-question">"내가 사업을 할 수 있을까?"</span>
+          네, 할 수 있습니다.
+          <span class="line-accent">8주 안에 실제로 돈을 벌어봅니다.</span>
+        </h1>
+        <p class="hero-copy">
+          듣고 끝나는 강의가 아닙니다. 아이디어부터 판매 페이지 제작, 실제 세일즈까지
+          8주 동안 직접 만들고 실행하는 오프라인 프로그램입니다.
+        </p>
+
+        <div class="info-bar">
+          <div class="info-item">
+            <span class="info-icon">📅</span>
+            <span class="info-value">4월 4일(토)</span>
+            <span class="info-label">시작일</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">⏰</span>
+            <span class="info-value">매주 토요일</span>
+            <span class="info-label">오전 10시</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🕒</span>
+            <span class="info-value">3시간 · 8주</span>
+            <span class="info-label">과정</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🏢</span>
+            <span class="info-value">오프라인</span>
+            <span class="info-label">직접 수업</span>
+          </div>
+        </div>
+
+        <a
+          class="cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc7ewJ7NPJmSJTzm3sWapPbn5Rp0OSdFJrA51GHMlRNRDF4rQ/viewform?usp=header"
+          target="_blank"
+          rel="noopener"
+        >프로그램 신청하기 →</a>
+      </div>
+
+      <!-- ── Problem ── -->
+      <section class="section">
+        <h3>🤔 이런 고민, 해본 적 있으신가요?</h3>
+        <p class="section-subtitle">준비만 하다 또 1년이 지나가고 있진 않나요?</p>
+        <div class="pain-grid">
+          <div class="pain-item">
+            <span class="pain-emoji">😶</span>
+            <span class="pain-text">"하고 싶은 건 있는데, 뭘 해야 할지 모르겠어"</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-emoji">🤔</span>
+            <span class="pain-text">"내 경험이 진짜 돈이 될 수 있을까?"</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-emoji">😔</span>
+            <span class="pain-text">"준비만 하다가 또 1년이 지나갔어"</span>
+          </div>
+          <div class="pain-item">
+            <span class="pain-emoji">😰</span>
+            <span class="pain-text">"사업은 특별한 사람만 하는 거 아니야?"</span>
+          </div>
+          <div class="pain-item" style="grid-column: span 2;">
+            <span class="pain-emoji">😅</span>
+            <span class="pain-text">"세일즈? 나는 그런 거 못 해"</span>
+          </div>
+        </div>
+        <div class="quote-block">
+          이 고민들이 낯설지 않다면, 해피리치 아카데미가 필요한 분입니다.
+        </div>
+      </section>
+
+      <!-- ── Solution ── -->
+      <section class="section">
+        <h3>✅ 해피리치 아카데미가 다른 이유</h3>
+        <p class="section-subtitle">강의를 듣는 게 아니라 직접 만들고 실행합니다.</p>
+        <div class="solution-grid">
+          <div class="sol-card">
+            <span class="sol-icon">⚡</span>
+            <div class="sol-title">실행 중심 교육</div>
+            <p class="sol-desc">듣고 끝나는 강의가 아니라 직접 만들고 실행하는 구조</p>
+          </div>
+          <div class="sol-card">
+            <span class="sol-icon">🎯</span>
+            <div class="sol-title">결과를 만드는 코칭</div>
+            <p class="sol-desc">아이디어만 배우는 것이 아니라 실제 아이템 제작부터 세일즈까지</p>
+          </div>
+          <div class="sol-card">
+            <span class="sol-icon">💰</span>
+            <div class="sol-title">실제 사업 경험</div>
+            <p class="sol-desc">판매 페이지를 만들고 실제 세일즈를 직접 경험합니다</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Program Steps ── -->
+      <section class="section">
+        <h3>📌 프로그램 구성</h3>
+        <p class="section-subtitle">4단계로 실제 사업을 만들어갑니다.</p>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-title">사업 방향<br/>정리</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-title">아이템<br/>제작</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-title">판매 페이지<br/>제작</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-title">세일즈<br/>경험</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Curriculum ── -->
+      <section class="section">
+        <h3>📚 8주 커리큘럼</h3>
+        <p class="section-subtitle">매주 한 단계씩, 8주 후에는 실제 결과가 만들어집니다.</p>
+        <div class="curriculum-grid">
+          <div class="week-item">
+            <span class="week-badge">1주</span>
+            <span class="week-content">자기사랑 / 자기확신</span>
+          </div>
+          <div class="week-item">
+            <span class="week-badge">2주</span>
+            <span class="week-content">신념 / 사명 / 원칙</span>
+          </div>
+          <div class="week-item">
+            <span class="week-badge">3주</span>
+            <span class="week-content">아이템 찾기, 고객 / 문제 정의</span>
+          </div>
+          <div class="week-item">
+            <span class="week-badge">4주</span>
+            <span class="week-content">돈 무의식 & 상품 기획</span>
+          </div>
+          <div class="week-item">
+            <span class="week-badge">5주</span>
+            <span class="week-content">상세페이지 만들기</span>
+          </div>
+          <div class="week-item">
+            <span class="week-badge">6주</span>
+            <span class="week-content">상품 제작</span>
+          </div>
+          <div class="week-item">
+            <span class="week-badge">7주</span>
+            <span class="week-content">세일즈 전략</span>
+          </div>
+          <div class="week-item">
+            <span class="week-badge">8주</span>
+            <span class="week-content">세일즈 실습 & 결과 발표</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Leaders ── -->
+      <section class="section">
+        <h3>👥 함께하는 리더</h3>
+        <p class="section-subtitle">실전 경험을 가진 두 사람이 함께합니다.</p>
+        <div class="leaders-grid">
+          <div class="leader-card">
+            <img src="../office/leader.jpeg" alt="이수인" class="leader-photo" />
+            <div>
+              <div class="leader-name">이수인</div>
+              <div class="leader-role">세일즈 회사 대표</div>
+              <p class="leader-desc">연봉 10억 이상의 세일즈 경험을 바탕으로<br/>실전 세일즈와 사업 구조를 코칭합니다.</p>
+            </div>
+          </div>
+          <div class="leader-card">
+            <div class="leader-placeholder">🌟</div>
+            <div>
+              <div class="leader-name">송희진</div>
+              <div class="leader-role">사업가 전문 코치</div>
+              <p class="leader-desc">사업가들의 내면 성장과 실행력을<br/>함께 만들어가는 전문 코치입니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Who For ── -->
+      <section class="section">
+        <h3>🙋 이런 분께 추천합니다</h3>
+        <div class="fit-grid">
+          <div class="fit-card good">
+            <div class="fit-card-title">✅ 이런 분께 딱 맞습니다</div>
+            <ul class="fit-list">
+              <li><span class="fit-check">✓</span> 좋아하는 일로 수익을 만들고 싶은 분</li>
+              <li><span class="fit-check">✓</span> 경험을 전자책이나 강의로 만들고 싶은 분</li>
+              <li><span class="fit-check">✓</span> 기존 사업의 매출을 확장하고 싶은 분</li>
+              <li><span class="fit-check">✓</span> 실행 중심 사업 교육을 원하는 분</li>
+              <li><span class="fit-check">✓</span> 사업을 시작하고 싶지만 방법을 모르는 분</li>
+            </ul>
+          </div>
+          <div class="fit-card bad">
+            <div class="fit-card-title">❌ 이런 분은 맞지 않습니다</div>
+            <ul class="fit-list">
+              <li><span class="fit-check">✗</span> 실행 의지가 없는 분</li>
+              <li><span class="fit-check">✗</span> 정보만 얻고 싶은 분</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Pricing ── -->
+      <section class="section">
+        <h3>💎 수강료</h3>
+        <p class="section-subtitle">8주 동안 실제 사업을 만드는 경험, 단 한 번의 투자입니다.</p>
+        <div class="price-box">
+          <div class="price-left">
+            <div class="price-tag-label">🎓 해피리치 아카데미 · 8주 과정</div>
+            <div class="price-name">프로그램 수강료</div>
+            <div class="price-amount">189만원</div>
+            <div class="price-period">/ 전체 과정 (8주)</div>
+            <ul class="price-features">
+              <li><span class="check">✓</span> 매주 토요일 오전 10시 · 3시간 오프라인 수업</li>
+              <li><span class="check">✓</span> 이수인·송희진 직접 코칭</li>
+              <li><span class="check">✓</span> 실제 판매 페이지 제작</li>
+              <li><span class="check">✓</span> 세일즈 실습 & 결과 발표</li>
+            </ul>
+          </div>
+          <div class="price-right">
+            <a
+              class="cta"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSc7ewJ7NPJmSJTzm3sWapPbn5Rp0OSdFJrA51GHMlRNRDF4rQ/viewform?usp=header"
+              target="_blank"
+              rel="noopener"
+              style="margin-top: 0;"
+            >지금 신청하기 →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Final CTA ── -->
+      <section class="cta-section">
+        <h3>8주 후, 실제로 돈을 벌어봅니다</h3>
+        <p>준비만 하다 끝나지 않도록. 지금 바로 시작하세요.</p>
+        <div class="urgency-badges">
+          <span class="urgency-badge">📅 4월 4일 시작</span>
+          <span class="urgency-badge">👥 소수 정예</span>
+          <span class="urgency-badge">🏢 오프라인 진행</span>
+        </div>
+        <a
+          class="cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc7ewJ7NPJmSJTzm3sWapPbn5Rp0OSdFJrA51GHMlRNRDF4rQ/viewform?usp=header"
+          target="_blank"
+          rel="noopener"
+        >프로그램 신청하기 →</a>
+      </section>
+
+    </div>
+  </body>
+</html>
