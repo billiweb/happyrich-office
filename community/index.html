@@ -473,6 +473,26 @@
         font-weight: 700;
       }
 
+      /* ── Community Photos ── */
+      .community-photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .community-photo {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+        border: 1px solid var(--border-subtle);
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: block;
+      }
+
+      .community-photo:hover { transform: scale(1.02); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+
       /* ── Final CTA ── */
       .cta-section {
         margin-top: 40px;
@@ -666,6 +686,10 @@
         </div>
         <div class="quote-block">
           말하는 순간 내 사업이 정리되고, <strong>브랜딩이 시작됩니다.</strong>
+        </div>
+        <div class="community-photos">
+          <img src="../images/community01.jpeg" alt="커뮤니티 모임 1" class="community-photo" />
+          <img src="../images/community02.jpeg" alt="커뮤니티 모임 2" class="community-photo" />
         </div>
       </section>
 

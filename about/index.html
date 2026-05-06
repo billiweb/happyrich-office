@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이수인 | 나는 '행복한 부자'를 만드는 사람이다</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080e1a;
+        --surface: #0f1624;
+        --surface-2: #161f33;
+        --text: #f0f4ff;
+        --muted: #8899bb;
+        --accent: #ff9d42;
+        --gold: #ffd46a;
+        --border: rgba(255, 157, 66, 0.22);
+        --border-subtle: rgba(255, 255, 255, 0.07);
+        --shadow: 0 40px 100px rgba(0, 0, 0, 0.45);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── Navigation ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 14, 26, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 14px 24px;
+      }
+
+      .nav-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo { height: 38px; width: auto; }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .nav-link:hover { color: var(--text); }
+
+      /* ── Page ── */
+      .page { max-width: 860px; margin: 0 auto; padding: 64px 24px 100px; }
+
+      /* ── Hero ── */
+      .hero {
+        text-align: center;
+        padding: 64px 48px;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: linear-gradient(145deg, rgba(18,26,44,0.98), rgba(11,16,28,0.95));
+        box-shadow: var(--shadow), 0 0 0 1px rgba(255,157,66,0.08);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -100px; left: 50%; transform: translateX(-50%);
+        width: 600px; height: 400px;
+        background: radial-gradient(ellipse, rgba(255,157,66,0.08) 0%, transparent 65%);
+        pointer-events: none;
+      }
+
+      .hero-photo {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: top;
+        border: 3px solid rgba(255,157,66,0.4);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        margin: 0 auto 28px;
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 900;
+        letter-spacing: -0.045em;
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+
+      h1 .accent {
+        background: linear-gradient(135deg, #ff9d42, #ffd46a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-desc {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+
+      /* ── Photo Grid ── */
+      .photo-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 16px 0;
+      }
+
+      .photo-grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin: 16px 0;
+      }
+
+      .photo-full {
+        width: 100%;
+        margin: 16px 0;
+      }
+
+      .story-img {
+        width: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+        display: block;
+        border: 1px solid var(--border-subtle);
+        transition: transform 0.25s, box-shadow 0.25s;
+      }
+
+      .story-img:hover { transform: scale(1.02); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+
+      .story-img.tall { aspect-ratio: 3/4; }
+      .story-img.wide { aspect-ratio: 16/9; }
+
+      /* ── Story Block ── */
+      .story-block {
+        margin-top: 40px;
+        padding: 40px;
+        border-radius: 28px;
+        background: rgba(11, 17, 30, 0.95);
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      }
+
+      .story-block + .story-block { margin-top: 16px; }
+
+      .story-block h2 {
+        font-size: 1.6rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .story-block h2 .sub {
+        display: block;
+        font-size: 0.7em;
+        font-weight: 600;
+        color: var(--accent);
+        letter-spacing: 0.02em;
+        margin-bottom: 6px;
+      }
+
+      .story-text {
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.95;
+      }
+
+      .story-text + .story-text { margin-top: 16px; }
+
+      .story-text strong { color: var(--text); }
+
+      /* ── Quote ── */
+      .quote-block {
+        margin-top: 24px;
+        padding: 22px 26px;
+        border-radius: 16px;
+        background: rgba(255,157,66,0.07);
+        border-left: 3px solid var(--accent);
+        color: #f0e8d8;
+        font-weight: 600;
+        font-size: 1.05rem;
+        line-height: 1.85;
+      }
+
+      /* ── Insight Cards ── */
+      .insights {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .insight-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 18px 22px;
+        background: var(--surface-2);
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s;
+      }
+
+      .insight-item:hover { border-color: rgba(255,157,66,0.25); }
+
+      .insight-quote {
+        font-size: 2rem;
+        color: var(--accent);
+        opacity: 0.5;
+        flex-shrink: 0;
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+
+      .insight-text {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #f0e8d8;
+        line-height: 1.6;
+        padding-top: 4px;
+      }
+
+      /* ── Who Cards ── */
+      .who-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .who-card {
+        padding: 24px;
+        border-radius: 20px;
+        background: var(--surface-2);
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s, transform 0.2s;
+      }
+
+      .who-card:hover { border-color: rgba(255,157,66,0.2); transform: translateY(-2px); }
+
+      .who-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+      .who-text { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+      /* ── Final Question ── */
+      .final-section {
+        margin-top: 40px;
+        padding: 56px 48px;
+        border-radius: 28px;
+        background: linear-gradient(145deg, rgba(255,157,66,0.1), rgba(255,212,106,0.04));
+        border: 1px solid rgba(255,157,66,0.22);
+        text-align: center;
+      }
+
+      .final-section h2 {
+        font-size: 1.8rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+
+      .final-section p { color: var(--muted); font-size: 1.02rem; line-height: 1.9; margin-bottom: 12px; }
+
+      .final-section p:last-child { margin-bottom: 0; }
+
+      .final-section .accent { color: var(--accent); font-weight: 800; }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .hero { padding: 48px 28px; }
+        .story-block { padding: 28px 22px; }
+        .photo-grid-2 { grid-template-columns: 1fr; }
+        .photo-grid-3 { grid-template-columns: 1fr 1fr; }
+        .who-grid { grid-template-columns: 1fr; }
+        .final-section { padding: 40px 24px; }
+      }
+
+      @media (max-width: 480px) {
+        .photo-grid-3 { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <img src="../images/Happyrich.png" alt="해피리치" class="nav-logo" />
+        <div class="nav-links">
+          <a href="../office/" class="nav-link">오피스</a>
+          <a href="../academy/" class="nav-link">아카데미</a>
+          <a href="../community/" class="nav-link">커뮤니티</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page">
+
+      <!-- ── Hero ── -->
+      <div class="hero">
+        <img src="../images/leader.jpeg" alt="이수인" class="hero-photo" />
+        <div class="hero-title">이수인 · 해피리치 대표</div>
+        <h1>
+          나는 <span class="accent">'행복한 부자'</span>를<br />
+          만드는 사람이다
+        </h1>
+        <p class="hero-desc">
+          "돈 벌면 괜찮아질 거야."<br />
+          그 말, 맞을까요?<br />
+          나는 그 끝까지 가본 사람입니다.
+        </p>
+      </div>
+
+      <!-- ── 나는 돈을 벌어봤다 ── -->
+      <div class="story-block">
+        <h2>
+          <span class="sub">CHAPTER 1</span>
+          나는 돈을 벌어봤다
+        </h2>
+        <p class="story-text">
+          사업을 키웠고, 직원 150명을 두는 대표가 되었고, 월 3억, 4억을 벌었습니다.<br />
+          겉으로 보면 누가 봐도 성공이었습니다.
+        </p>
+        <div class="quote-block">
+          그런데 이상했습니다.<br />
+          <strong>하나도 채워지지 않았습니다.</strong>
+        </div>
+      </div>
+
+      <div class="photo-grid-2">
+        <img src="../images/001.jpeg" alt="" class="story-img" />
+        <img src="../images/002.jpeg" alt="" class="story-img" />
+      </div>
+
+      <!-- ── 그래서 나는 더 해봤다 ── -->
+      <div class="story-block">
+        <h2>
+          <span class="sub">CHAPTER 2</span>
+          그래서 나는 더 해봤다
+        </h2>
+        <p class="story-text">
+          더 배우면 괜찮아질 줄 알았습니다.<br />
+          강의, 책, 코칭, 사업 확장 — 수억을 썼습니다.
+        </p>
+        <p class="story-text">
+          그래도 안 됐습니다.<br />
+          그래서 마지막이라고 생각하고 다른 방향으로 가봤습니다.
+        </p>
+        <p class="story-text">
+          명상, 심리상담, 정신과, 무의식 치료, 에너지 힐링까지 — <strong>1억을 썼습니다.</strong>
+        </p>
+      </div>
+
+      <div class="photo-grid-3">
+        <img src="../images/003.jpeg" alt="" class="story-img" />
+        <img src="../images/004.jpeg" alt="" class="story-img" />
+        <img src="../images/005.jpeg" alt="" class="story-img" />
+      </div>
+
+      <!-- ── 나를 사랑할 줄 몰랐다 ── -->
+      <div class="story-block">
+        <h2>
+          <span class="sub">CHAPTER 3</span>
+          나는 나를 사랑할 줄 몰랐다
+        </h2>
+        <p class="story-text">
+          나는 늘 조건으로 나를 평가했습니다.<br />
+          더 잘해야 인정받고, 더 벌어야 가치 있고, 더 성장해야 괜찮은 존재라고 믿었습니다.
+        </p>
+        <p class="story-text">
+          그래서 아무리 채워도 항상 부족했습니다. 그래서 멈출 수 없었습니다.
+        </p>
+        <div class="quote-block">
+          문제는 돈이 아니었고, 능력도 아니었습니다.<br />
+          <strong>문제는 '나를 대하는 방식'이었습니다.</strong>
+        </div>
+      </div>
+
+      <div class="photo-grid-2">
+        <img src="../images/006.jpeg" alt="" class="story-img" />
+        <img src="../images/007.jpeg" alt="" class="story-img" />
+      </div>
+
+      <!-- ── 그래서 방향을 바꿨다 ── -->
+      <div class="story-block">
+        <h2>
+          <span class="sub">CHAPTER 4</span>
+          그래서 나는 방향을 바꿨다
+        </h2>
+        <p class="story-text">
+          더 벌기 전에, 더 성장하기 전에 — 나를 먼저 바로 세우기로 했습니다.
+        </p>
+        <div class="insights">
+          <div class="insight-item">
+            <span class="insight-quote">"</span>
+            <span class="insight-text">자기사랑은 감정이 아니라 구조다</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-quote">"</span>
+            <span class="insight-text">자신감은 결과가 아니라 선택이다</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-quote">"</span>
+            <span class="insight-text">자유는 돈이 아니라 기준에서 나온다</span>
+          </div>
+        </div>
+        <div class="quote-block" style="margin-top: 24px;">
+          이걸 이해하고 나니까 <strong>삶이 완전히 달라지기 시작했습니다.</strong>
+        </div>
+      </div>
+
+      <div class="photo-grid-3">
+        <img src="../images/008.jpeg" alt="" class="story-img" />
+        <img src="../images/009.jpeg" alt="" class="story-img" />
+        <img src="../images/010.jpeg" alt="" class="story-img" />
+      </div>
+
+      <!-- ── 내가 하는 일 ── -->
+      <div class="story-block">
+        <h2>
+          <span class="sub">WHAT I DO</span>
+          내가 하는 일은 이것이다
+        </h2>
+        <p class="story-text">
+          나는 사람들에게 더 열심히 하라고 말하지 않습니다.<br />
+          이미 많은 사람들이 충분히 열심히 살고 있기 때문입니다.
+        </p>
+        <p class="story-text">대신 이렇게 말합니다.</p>
+        <div class="quote-block">
+          <strong>"이제는 방향을 바꿔야 합니다."</strong>
+        </div>
+        <div class="who-grid">
+          <div class="who-card">
+            <span class="who-icon">❤️</span>
+            <p class="who-text"><strong style="color:var(--text);">자신을 사랑하는 기준</strong>을 만들고</p>
+          </div>
+          <div class="who-card">
+            <span class="who-icon">🔥</span>
+            <p class="who-text">흔들리지 않는 <strong style="color:var(--text);">자기확신</strong>을 세우고</p>
+          </div>
+          <div class="who-card" style="grid-column: span 2;">
+            <span class="who-icon">💰</span>
+            <p class="who-text">그것을 현실로 만드는 <strong style="color:var(--text);">세일즈</strong>를 배우는 것<br />
+            이 3가지가 갖춰지면, 억지로 버티지 않아도 자연스럽게 돈이 따라옵니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-grid-2">
+        <img src="../images/011.jpeg" alt="" class="story-img" />
+        <img src="../images/012.jpeg" alt="" class="story-img" />
+      </div>
+
+      <!-- ── 성공을 다르게 본다 ── -->
+      <div class="story-block">
+        <h2>
+          <span class="sub">MY DEFINITION</span>
+          나는 성공을 다르게 본다
+        </h2>
+        <p class="story-text">
+          성공은 <strong>얼마를 버느냐</strong>가 아니라<br />
+          <strong>어떤 상태로 사느냐</strong>입니다.
+        </p>
+        <p class="story-text">
+          불안한 상태로 10억을 버는 것보다<br />
+          평온한 상태로 1억을 버는 사람이 훨씬 자유롭습니다.
+        </p>
+        <div class="quote-block">
+          그리고 아이러니하게도,<br />
+          <strong>평온한 사람이 결국 더 크게 법니다.</strong>
+        </div>
+      </div>
+
+      <div class="photo-full">
+        <img src="../images/013.jpeg" alt="" class="story-img wide" />
+      </div>
+
+      <!-- ── 이런 사람을 만든다 ── -->
+      <div class="story-block">
+        <h2>
+          <span class="sub">WHO I CREATE</span>
+          그래서 나는 이런 사람을 만든다
+        </h2>
+        <div class="who-grid">
+          <div class="who-card">
+            <span class="who-icon">🪞</span>
+            <p class="who-text">자신을 있는 그대로 인정하는 사람</p>
+          </div>
+          <div class="who-card">
+            <span class="who-icon">💛</span>
+            <p class="who-text">좋아하는 일로 돈을 버는 사람</p>
+          </div>
+          <div class="who-card">
+            <span class="who-icon">🕊️</span>
+            <p class="who-text">더 이상 불안에 끌려가지 않는 사람</p>
+          </div>
+          <div class="who-card">
+            <span class="who-icon">🌟</span>
+            <p class="who-text">다른 사람의 삶까지 바꾸는 사람</p>
+          </div>
+        </div>
+        <div class="quote-block" style="text-align: center; border-left: none; border: 1px solid rgba(255,157,66,0.3); background: rgba(255,157,66,0.1);">
+          나는 이들을 <strong>'행복한 부자'</strong>라고 부릅니다.
+        </div>
+      </div>
+
+      <!-- ── Final Question ── -->
+      <div class="final-section">
+        <h2>마지막으로 묻고 싶습니다</h2>
+        <p>당신은 지금 <span class="accent">더 많이 벌고 싶은가요?</span></p>
+        <p>아니면 이제는 <span class="accent">괜찮아지고 싶은가요?</span></p>
+        <p style="margin-top: 24px; font-size: 1.1rem; font-weight: 700; color: var(--text);">
+          이 질문의 답이 당신의 인생 방향을 바꿉니다.
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>
