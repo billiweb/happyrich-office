@@ -316,13 +316,71 @@
 
       .final-section .accent { color: var(--accent); font-weight: 800; }
 
+      /* ── Hamburger ── */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 4px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 14, 26, 0.97);
+        z-index: 200;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+      }
+
+      .mobile-menu.open { display: flex; }
+
+      .mobile-menu-link {
+        color: var(--text);
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .mobile-menu-link:hover { color: var(--accent); }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: 20px; right: 24px;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+      }
+
       /* ── Responsive ── */
       @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hamburger { display: flex; }
         .hero { padding: 48px 28px; }
         .story-block { padding: 28px 22px; }
         .photo-grid-2 { grid-template-columns: 1fr; }
         .photo-grid-3 { grid-template-columns: 1fr 1fr; }
         .who-grid { grid-template-columns: 1fr; }
+        .who-card { grid-column: span 1 !important; }
         .final-section { padding: 40px 24px; }
       }
 
@@ -343,8 +401,20 @@
           <a href="../community/" class="nav-link">커뮤니티</a>
           <a href="../bookclub/" class="nav-link">독서모임</a>
         </div>
+        <button class="hamburger" id="hamburger" aria-label="메뉴">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-menu-close" id="mobileClose">✕</button>
+      <a href="../office/" class="mobile-menu-link">오피스</a>
+      <a href="../academy/" class="mobile-menu-link">아카데미</a>
+      <a href="../community/" class="mobile-menu-link">커뮤니티</a>
+      <a href="../bookclub/" class="mobile-menu-link">독서모임</a>
+    </div>
 
     <div class="page">
 
@@ -564,5 +634,28 @@
       </div>
 
     </div>
+
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileClose = document.getElementById('mobileClose');
+
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+
+      mobileClose.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+
+      mobileMenu.querySelectorAll('.mobile-menu-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    </script>
   </body>
 </html>
