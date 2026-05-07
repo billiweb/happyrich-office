@@ -289,6 +289,8 @@
 
       .who-card:hover { border-color: rgba(255,157,66,0.2); transform: translateY(-2px); }
 
+      .who-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
       .who-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
       .who-text { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
 
@@ -380,6 +382,7 @@
         .photo-grid-2 { grid-template-columns: 1fr; }
         .photo-grid-3 { grid-template-columns: 1fr 1fr; }
         .who-grid { grid-template-columns: 1fr; }
+        .who-grid-3 { grid-template-columns: 1fr; }
         .who-card { grid-column: span 1 !important; }
         .final-section { padding: 40px 24px; }
       }
@@ -553,7 +556,7 @@
         <div class="quote-block">
           <strong>"이제는 방향을 바꿔야 합니다."</strong>
         </div>
-        <div class="who-grid">
+        <div class="who-grid who-grid-3">
           <div class="who-card">
             <span class="who-icon">❤️</span>
             <p class="who-text"><strong style="color:var(--text);">자신을 사랑하는 기준</strong>을 만들고</p>
@@ -562,12 +565,14 @@
             <span class="who-icon">🔥</span>
             <p class="who-text">흔들리지 않는 <strong style="color:var(--text);">자기확신</strong>을 세우고</p>
           </div>
-          <div class="who-card" style="grid-column: span 2;">
+          <div class="who-card">
             <span class="who-icon">💰</span>
-            <p class="who-text">그것을 현실로 만드는 <strong style="color:var(--text);">세일즈</strong>를 배우는 것<br />
-            이 3가지가 갖춰지면, 억지로 버티지 않아도 자연스럽게 돈이 따라옵니다.</p>
+            <p class="who-text">그것을 현실로 만드는 <strong style="color:var(--text);">세일즈</strong>를 배우는 것</p>
           </div>
         </div>
+        <p class="story-text" style="margin-top: 20px; text-align: center;">
+          이 3가지가 갖춰지면, 억지로 버티지 않아도 자연스럽게 돈이 따라옵니다.
+        </p>
       </div>
 
       <!-- ── 성공을 다르게 본다 ── -->
